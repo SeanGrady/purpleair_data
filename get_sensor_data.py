@@ -6,12 +6,19 @@ from matplotlib import pyplot as plt
 import pandas
 
 
+SENSOR_METADATA_PATH = "/home/sgrady/dev/purpleair_data/sensor_metadata.json"
 
-def get_sensor_id(sensor_name):
-    with open("/home/sgrady/dev/purpleair_data/sensor_metadata.json", "r") as metadata:
+
+def get_sensor_id(sensor_name: str):
+    with open(SENSOR_METADATA_PATH, "r") as metadata:
         sensor_metadata = json.load(metadata)
         sensor_id = sensor_metadata[sensor_name]["id"]
     return sensor_id
+
+
+def get_sensor_by_name(sensor_name: str):
+    sensor_id = get_sensor_id(sensor_name)
+    return Sensor(sensor_id)
 
 
 def get_sensor_historical_data(
@@ -31,13 +38,6 @@ def get_sensor_historical_data(
         thingspeak_field=field,
     )
     return historical_dataframe
-
-
-def plot_pressure_daata(
-    sensor_name: str,
-):
-    sensor_data = get_sensor_historical_data(sensor_name)
-    sensor_data.plot()
 
 
 def plot_tonga_eruption():
@@ -92,7 +92,3 @@ def plot_tonga_eruption():
     plt.savefig("WHOA.png", bbox_inches="tight")
 
     plt.show()
-
-
-if __name__ == "__main__":
-    plot_tonga_eruption()
