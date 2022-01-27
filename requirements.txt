@@ -1,1 +1,3 @@
 purpleair
+pandas
+matplotlib
