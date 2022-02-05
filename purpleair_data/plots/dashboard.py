@@ -1,48 +1,10 @@
-import json
-from pprint import pprint
-from purpleair.sensor import Sensor
-from datetime import datetime
-from matplotlib import pyplot as plt
-import pandas
-
-
-SENSOR_METADATA_PATH = "/home/sgrady/dev/purpleair_data/sensor_metadata.json"
-
-
-def get_sensor_id(sensor_name: str):
-    with open(SENSOR_METADATA_PATH, "r") as metadata:
-        sensor_metadata = json.load(metadata)
-        sensor_id = sensor_metadata[sensor_name]["id"]
-    return sensor_id
-
-
-def get_sensor_by_name(sensor_name: str):
-    sensor_id = get_sensor_id(sensor_name)
-    return Sensor(sensor_id)
-
-
-def get_sensor_historical_data(
-    sensor_name: str,
-    channel: str,
-    field: str,
-    weeks: int,
-) -> pandas.DataFrame:
-    sensor_id = get_sensor_id(sensor_name)
-    sensor = Sensor(sensor_id)
-    channels = {
-        "parent": sensor.parent,
-        "child": sensor.child,
-    }
-    historical_dataframe = channels[channel].get_historical(
-        weeks_to_get=weeks,
-        thingspeak_field=field,
-    )
-    return historical_dataframe
+from
 
 
 def plot_tonga_eruption():
+    sean_sensor = Sensor(get_sensor_id_by_name("sean"))
     sean_data = get_sensor_historical_data(
-        "sean",
+        sean_sensor,
         "child",
         "primary",
         2,
@@ -53,8 +15,9 @@ def plot_tonga_eruption():
         label="Evergreen Estates",
     )
 
+    cherry_hill_sensor = Sensor(get_sensor_id_by_name("sean"))
     cherry_hill_data = get_sensor_historical_data(
-        "cherry_hill",
+        cherry_hill_sensor,
         "child",
         "primary",
         2,
@@ -66,8 +29,9 @@ def plot_tonga_eruption():
         label="Cherry Hill",
     )
 
+    firestation_sensor = Sensor(get_sensor_id_by_name("sean"))
     firestation_data = get_sensor_historical_data(
-        "firestation",
+        firestation_sensor,
         "child",
         "primary",
         2,
@@ -90,5 +54,3 @@ def plot_tonga_eruption():
 
     plt.legend(bbox_to_anchor=(1.03, 0.5), loc="center left")
     plt.savefig("WHOA.png", bbox_inches="tight")
-
-    plt.show()
