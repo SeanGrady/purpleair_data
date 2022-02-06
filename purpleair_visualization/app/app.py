@@ -4,6 +4,7 @@
 from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
+from purpleair_visualization.plots.tonga import plot_tonga_eruption
 
 app = Dash(__name__)
 

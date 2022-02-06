@@ -1,0 +1,18 @@
+{
+    "sean": {
+        "id": 124983,
+        "voc_sensor": true
+    },
+    "deb": {
+        "id": 136424,
+        "voc_sensor": true
+    },
+    "firestation": {
+        "id": 98927,
+        "voc_sensor": false
+    },
+    "cherry_hill": {
+        "id": 5966,
+        "voc_sensor": false
+    }
+}

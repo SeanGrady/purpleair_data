@@ -2,10 +2,11 @@ import json
 from pprint import pprint
 from purpleair.sensor import Sensor
 from datetime import datetime
-import pandas
+import pandas as pd
+import plotly.graph_objects as go
 
 
-SENSOR_METADATA_PATH = "/home/sgrady/dev/sensor_data/sensor_metadata.json"
+SENSOR_METADATA_PATH = "/home/sgrady/dev/sensor_data/purpleair_visualization/data/sensor_metadata.json"
 
 
 def get_sensor_id_by_name(sensor_name: str):
@@ -20,7 +21,7 @@ def get_sensor_historical_data(
     channel: str,
     field: str,
     weeks: int,
-) -> pandas.DataFrame:
+) -> pd.DataFrame:
     channels = {
         "parent": sensor.parent,
         "child": sensor.child,

@@ -1,18 +1,22 @@
 {
     "sean": {
         "id": 124983,
-        "voc_sensor": true
+        "voc_sensor": true,
+        "display_name": "Evergreen Estates"
     },
     "deb": {
         "id": 136424,
-        "voc_sensor": true
+        "voc_sensor": true,
+        "display_name": "Kayak House (Ennis Creek Bluffs)"
     },
     "firestation": {
         "id": 98927,
-        "voc_sensor": false
+        "voc_sensor": false,
+        "display_name": "Port Angeles Firestation (or maybe Safeway)"
     },
     "cherry_hill": {
         "id": 5966,
-        "voc_sensor": false
+        "voc_sensor": false,
+        "display_name": "Evergreen Estates"
     }
 }
